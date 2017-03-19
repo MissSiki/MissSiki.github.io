@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        拖拽并可以改变大小</title>
+    <style>
+        *{ padding:0;margin: 0}
+        body{background: url("images/bg.jpg")}
+        .box{ width: 250px;  height: 124px;background: #e9e9e9;  border: 1px solid #444;  border-radius: 5px;box-shadow: 0 1px 3px 2px #666;position: absolute;}
+        .title{position: relative;  height: 27px;  margin: 5px;}
+        h3{font-size: 13px; height: 27px; line-height: 24px; border-bottom: 1px solid #A1B4B0;cursor: move;}
+        .content{font-size: 12px;line-height: 1.5;margin: 0 5px;}
+        .control{position: absolute; height: 19px;top: 2px;right: 0;}
+        .control a{float: left; width: 21px; height: 19px; display: block; margin-left: 5px; background: url(images/tool.png) no-repeat;}
+        .control a:nth-of-type(1){background-position: -29px 0;}
+        .control a:nth-of-type(1):hover{background-position: -29px -29px;}
+        .control a:nth-of-type(2){background-position: -60px 0;}
+        .control a:nth-of-type(2):hover{background-position: -60px -29px;}
+        .control a:nth-of-type(3){background-position: -149px 0;}
+        .control a:nth-of-type(3):hover{background-position: -149px -29px;}
+        .control a:nth-of-type(4){background-position: -89px 0;}
+        .control a:nth-of-type(4):hover{background-position: -89px -29px;}
+        .t,.b,.l,.r,.lt,.rt,.rb,.lb{position: absolute;opacity: 0;}
+        .l,.r{height: 100%;width: 5px;cursor:w-resize;top:0;}
+        .t,.b{width:100%;height:5px;cursor: n-resize;left: 0;}
+        .l{left: 0;}
+        .r{right: 0;}
+        .t{top:0;}
+        .b{bottom:0;}
+        .lt,.rt,.lb{width: 8px;height: 8px;}
+        .lt,.lb{left:0;}
+        .lt,.rt{top:0;}
+        .rt,.rb{right: 0;}
+        .rb,.lb{bottom: 0;}
+        .lt,.rb{cursor: nw-resize;}
+        .rt,.lb{cursor: ne-resize;}
+        .rb{width: 14px;height: 14px;background: url("images/resize.png") no-repeat;opacity: 1}
+        .open{position: absolute; top: 10px; left: 50%;  margin-left: -10px;  background-position: 0 0; width: 21px; height: 19px; display: block; background: url(images/tool.png) no-repeat}
+        .open:hover{background-position: 0 -29px;}
+    </style>
+    <script>
+
+    window.onload = function () {
+        var move = document.getElementsByClassName("move")
+        var oA = document.getElementsByTagName("a");
+        var box = document.getElementById("box")
+        var MinWidth = 250;
+        var MinHeight = 124;
+        var title = document.getElementsByClassName("title")[0];
+
+        function drag(box, handle) {
+            var disX = dixY = 0;
+            handle = handle || box;
+            handle.style.cursor = "move";
+            handle.onmousedown = function (event) {
+                var event = event || window.event;
+                disX = event.clientX - box.offsetLeft;
+                disY = event.clientY - box.offsetTop;
+
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    var iL = event.clientX - disX;
+                    var iT = event.clientY - disY;
+                    var maxL = document.documentElement.clientWidth - box.offsetWidth;
+                    var maxT = document.documentElement.clientHeight - box.offsetHeight;
+
+                    iL <= 0 && (iL = 0);
+                    iT <= 0 && (iT = 0);
+                    iL >= maxL && (iL = maxL);
+                    iT >= maxT && (iT = maxT);
+
+                    box.style.left = iL + "px";
+                    box.style.top = iT + "px";
+
+                    return false
+                };
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    this.releaseCapture && this.releaseCapture()
+                };
+                this.setCapture && this.setCapture();
+                return false
+            };
+
+            //最大化
+            oA[1].onclick = function ()
+            {
+                box.style.top = box.style.left = 0;
+                box.style.width = document.documentElement.clientWidth - 2 + "px";
+                box.style.height = document.documentElement.clientHeight - 2 + "px";
+                this.style.display = "none";
+                oA[2].style.display = "block";
+            };
+
+            //还原按钮
+            oA[2].onclick = function ()
+            {
+                box.style.width = MinWidth + "px";
+                box.style.height = MinHeight + "px";
+                box.style.left = (document.documentElement.clientWidth - box.offsetWidth) / 2 + "px";
+                box.style.top = (document.documentElement.clientHeight - box.offsetHeight) / 2 + "px";
+                this.style.display = "none";
+                oA[1].style.display = "block";
+            };
+            //最小化按钮
+            oA[0].onclick = oA[3].onclick = function ()
+            {
+                box.style.display = "none";
+                oA[4].style.display = "block";
+                oA[4].onclick = function ()
+                {
+                    box.style.display = "block";
+                    this.style.display = "none";
+                    this.onclick = null;
+                };
+            };
+
+            oA[0].onmousedown = oA[1].onmousedown = oA[3].onmousedown = function (event)
+            {
+                this.onfocus = function () {this.blur()};
+                (event || window.event).cancelBubble = true
+            };
+
+        };
+
+
+            function resize(oParent, handle, isLeft, isTop, lockX, lockY)
+            {
+                handle.onmousedown = function (event)
+                {
+                    var event = event || window.event;
+                    var disX = event.clientX - handle.offsetLeft;
+                    var disY = event.clientY - handle.offsetTop;
+                    var iParentTop = oParent.offsetTop;
+                    var iParentLeft = oParent.offsetLeft;
+                    var iParentWidth = oParent.offsetWidth;
+                    var iParentHeight = oParent.offsetHeight;
+
+                    document.onmousemove = function (event)
+                    {
+                        var event = event || window.event;
+
+                        var iL = event.clientX - disX;
+                        var iT = event.clientY - disY;
+                        var maxW = document.documentElement.clientWidth - oParent.offsetLeft - 2;
+                        var maxH = document.documentElement.clientHeight - oParent.offsetTop - 2;
+                        var iW = isLeft ? iParentWidth - iL : handle.offsetWidth + iL;
+                        var iH = isTop ? iParentHeight - iT : handle.offsetHeight + iT;
+
+                        isLeft && (oParent.style.left = iParentLeft + iL + "px");
+                        isTop && (oParent.style.top = iParentTop + iT + "px");
+
+                        iW < MinWidth && (iW = MinWidth);
+                        iW > maxW && (iW = maxW);
+                        lockX || (oParent.style.width = iW + "px");
+
+                        iH < MinHeight && (iH = MinHeight);
+                        iH > maxH && (iH = maxH);
+                        lockY || (oParent.style.height = iH + "px");
+
+                        if((isLeft && iW == MinWidth) || (isTop && iH == MinHeight)) document.onmousemove = null;
+
+                        return false;
+                    };
+                    document.onmouseup = function ()
+                    {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    };
+                    return false;
+                }
+            };
+
+            drag(box,title);
+        //四角
+        resize(box, move[4], true, true, false, false);
+        resize(box, move[5], false, true, false, false);
+        resize(box, move[6], false, false, false, false);
+        resize(box, move[7], true, false, false, false);
+        //四边
+        resize(box, move[0], true, false, false, true);
+        resize(box, move[1], false, true, true, false);
+        resize(box, move[2], false, false, false, true);
+        resize(box, move[3], false, false, true, false);
+
+        box.style.left = (document.documentElement.clientWidth - box.offsetWidth) / 2 + "px";
+        box.style.top = (document.documentElement.clientHeight - box.offsetHeight) / 2 + "px";
+    }
+
+    </script>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="title">
+        <h3>这是一个可以拖动的窗口</h3>
+        <div class="control">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a style="display:none" href="javascript:;"></a>
+            <a href="javascript:;"></a>
+
+        </div>
+    </div>
+    <div class="content">
+        ① 窗口可以拖动；<br>
+        ② 窗口可以通过八个方向改变大小；<br>
+        ③ 窗口可以最小化、最大化、还原、关闭；<br>
+        ④ 限制窗口最小宽度/高度。<br>
+    </div>
+    <div class="l move"></div>
+    <div class="t move"></div>
+    <div class="r move"></div>
+    <div class="b move"></div>
+    <div class="lt move"></div>
+    <div class="rt move"></div>
+    <div class="rb move"></div>
+    <div class="lb move"></div>
+</div>
+<a class="open" href="javascript:;" style="display: none"></a>
+</body>
+</html>

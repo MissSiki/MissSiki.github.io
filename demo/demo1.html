@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇游戏</title>
+    <style>
+
+        input:disabled{background-color: rgba(57, 57, 57, 0.6);color: #fff;}
+        input{border: none;background-color: #ff4f0b;color: #000;padding:10px 0;display: inline-block;margin: 20px 0 0 0;text-align: center}
+        .game_box{width: 600px;height: 500px;border: 5px solid darkcyan;margin: 20px auto;position: relative;
+        background: url("imgs/snake_bg.jpg") no-repeat center;}
+        .game_box .new{height:10px;width:10px;background-color: #ff0e28;border: 1px solid #d6791f;box-sizing: border-box}
+        .move_box .move_list{height:10px;width:10px;background-color: #000000;position:absolute;left: 290px;top:240px}
+        .move_box div{height:10px;width:10px;background-color: #000000;border: 1px solid #d6791f;box-sizing: border-box}
+    </style>
+</head>
+<body>
+<input class="star_game" id="star" value="开始游戏">
+<input class="restar_game" id="restar" value="重新开始">
+
+<div class="game_box" id="box">
+    <div class="move_box" id="move">
+        <div class="move_list"></div>
+    </div>
+</div>
+
+
+
+<script>
+    window.onload = function () {
+        var oBtn = document.getElementById('star');
+        var oBtnRe = document.getElementById('restar');
+        var oMove = document.getElementById('move');
+        var oBox = document.getElementById('box');
+        var oMoveList = oMove.getElementsByTagName('div');
+        var btrue = false;
+        var timer = '';
+        var seconds = 100;
+        var speed = 10;
+        var arr1 = [];
+        var arr2 = [];
+        var a = 0;
+
+
+        oBtnRe.disabled = btrue ==true? false:true;
+        oBtnRe.onclick = function () {
+            location.reload()
+        };
+
+        oBtn.onclick = function () {
+            createNew();
+            this.disabled = true;
+                this.value = '正在游戏中';
+                move(oMoveList[0],'left',speed,seconds);
+                document.onkeydown = function (ev) {
+                    var ev = ev || event;
+                    switch (ev.keyCode) {
+                        case 37:move(oMoveList[0],'left',-speed,seconds);
+                            break;
+                        case 38:move(oMoveList[0],'top',-speed,seconds);
+                            break;
+                        case 39:move(oMoveList[0],'left',speed,seconds);
+                            break;
+                        case 40:move(oMoveList[0],'top',speed,seconds);
+                            break;
+                    }
+                }
+        };
+            function move(obj,attr,speed,seconds) {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    check(obj,attr,speed);
+                }, seconds);
+            }
+
+            var oBoxWidth = parseInt(getStyle(oBox,'width'));
+            var oMoveListWidth = parseInt(getStyle(oMoveList[0],'width'));
+            var oBoxHeight = parseInt(getStyle(oBox,'height'));
+            var oMoveListHeight = parseInt(getStyle(oMoveList[0],'height'));
+
+
+
+            function check(obj,attr,speed) {
+                var nowAttr = parseInt(getStyle(obj, attr)) + (speed);
+                oMoveList = oMove.getElementsByTagName('div');
+
+                //出借、游戏结束
+                if(attr == 'left'){
+                    if(nowAttr<0){
+                        nowAttr = 0;
+                        obj.style[attr] = 0;
+                        gameOver();
+                        return
+
+                    }
+                    if(nowAttr >oBoxWidth-oMoveListWidth){
+                        nowAttr = oBoxWidth-oMoveListWidth;
+                        obj.style[attr] = nowAttr+'px';
+                        gameOver();
+                        return
+                    }
+                }
+                if(attr == 'top'){
+                    if(nowAttr<0){
+                        nowAttr = 0;
+                        obj.style[attr] = 0;
+                        gameOver();
+                        return
+                    }
+                    if(nowAttr >oBoxHeight-oMoveListHeight){
+                        nowAttr = oBoxHeight-oMoveListHeight;
+                        obj.style[attr] = nowAttr+'px';
+                        gameOver();
+                        return
+                    }
+
+                }
+
+                var olast = oBox.lastChild;
+                if(collText(olast,obj.offsetLeft,obj.offsetTop,obj))
+                {
+                    oBox.removeChild(olast);
+                    createNew();
+                    add(oMove,attr,speed,seconds);
+                    a++;
+                }
+
+
+                arr1.push(obj.offsetLeft);
+                arr2.push(obj.offsetTop);
+                obj.style[attr] = nowAttr + 'px';
+                if( oMoveList[1]){
+                    for(var i=1;i<oMoveList.length;i++)
+                    {
+                        oMoveList[i].style.left = arr1[i-1]+'px';
+                        oMoveList[i].style.top = arr2[i-1]+ 'px';
+                    }
+                }
+
+
+                if(arr1.length>=a)
+                {
+                    arr1.shift();
+                    arr2.shift();
+                }
+
+                for (var j = 1;j<oMoveList.length;j++) {
+                    if(obj.offsetLeft == oMoveList[j].offsetLeft  && obj.offsetTop == oMoveList[j].offsetTop )
+                    {
+                        gameOver();
+                        return
+                    }
+                }
+
+            }
+
+            var l = 0;
+            var t = 0;
+
+
+            function gameOver() {
+                oBtn.value = "开始游戏";
+                oBtnRe.disabled = false;
+                clearInterval(timer);
+                setTimeout(function () {
+                    alert('游戏结束')
+                },30);
+            }
+
+            function  createNew() {
+                l = Math.round(Math.random()*(oBoxWidth-oMoveListWidth));
+                t = Math.round(Math.random()*(oBoxHeight-oMoveListHeight));
+                var oDiv = document.createElement('div');
+               for(var i=0;i<oMoveList.length;i++)
+               {
+                   if(l == oMoveList[i].offsetLeft && t == oMoveList[i].offsetTop)
+                   {
+                       createNew();
+                   }else {
+                       if (l % 10 < 5) {
+                           oDiv.style.left = (Math.floor(l / 10) * 10) + 'px';
+                       }
+                       if (l % 10 >= 5) {
+                           oDiv.style.left = (Math.floor(l / 10) * 10 + 10) + 'px';
+                       }
+                       if (t % 10 < 5) {
+                           oDiv.style.top = (Math.floor(t / 10) * 10) + 'px';
+                       }
+                       if (t % 10 >= 5) {
+                           oDiv.style.top = (Math.floor(t / 10) * 10 + 10) + 'px';
+                       }
+                       oDiv.style.position = 'absolute';
+                       oDiv.className = 'new';
+                       oBox.appendChild(oDiv);
+                   }
+               }
+
+            }
+
+
+
+
+
+            function add(obj,attr,speed,seconds) {
+                var oDiv = document.createElement('div');
+                obj.appendChild(oDiv);
+                oDiv.style.left = l;
+                oDiv.style.top = t;
+                oDiv.style.position = 'absolute';
+                return oDiv;
+            }
+
+
+    };
+
+
+
+    function getStyle(obj,attr){
+        if(obj.currentStyle){
+            return obj.currentStyle[attr];
+        }
+        else{
+            return getComputedStyle(obj,false)[attr];
+        }
+    }
+
+
+    function collText(obj1,left,top,obj){
+        var l1=obj1.offsetLeft;
+        var t1=obj1.offsetTop;
+        var r1=obj1.offsetLeft+obj1.offsetWidth;
+        var b1=obj1.offsetTop+obj1.offsetHeight;
+        if(left<l1||top<t1||left>=r1||top>=b1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

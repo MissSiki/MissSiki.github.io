@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机排序</title>
+    <style>
+        *{margin: 0;padding: 0}
+         li{list-style: none;}
+        .wrap{padding: 20px  50px;margin:20px auto;background-color: rgba(146, 65, 255, 0.59);text-align: center;width: 884px;}
+         button{width: 100px;height: 30px;background-color: #6402ff;text-align: center;margin: 20px 10px ;color: #ffffff;border: none;}
+        .list li{float: left;background-color: rgb(255, 255, 255);margin-right: 1px;text-align: center;padding: 10px;line-height: 0;margin-top: 1px;}
+        .list{width: 884px;height: 502px;}
+        .list li p{background-color: #ff1c82;line-height: 30px;color: #ffffff
+        }
+        .list li img{width:200px;height: 200px;}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <button>从大到小</button>
+    <button>随机排序</button>
+    <ul class="list" id="list">
+
+    </ul>
+</div>
+
+<script>
+
+    window.onload = function () {
+        var arr2=[0,1,2,3,4,5,6,7];
+        var arr1= {img:['imgs/1.jpg','imgs/2.jpg','imgs/3.jpg','imgs/4.jpg','imgs/5.jpg','imgs/6.jpg',
+            'imgs/7.jpg','imgs/8.jpg'],text:['1.alice','2.bom','3.cilin','4.david','5.eson','6.falen','7.galun','8.helun']};
+        var oUl = document.getElementById('list');
+        var oLi = oUl.getElementsByTagName('li');
+        var oBtn = document.getElementsByTagName('button');
+
+        for(var i=0;i<arr2.length;i++)
+        {
+            oUl.innerHTML +='<li><img src=""><p></p></li>';
+            oLi[i].getElementsByTagName('img')[0].src = arr1.img[i];
+            oLi[i].getElementsByTagName('p')[0].innerHTML = arr1.text[i]
+        }
+
+
+        oBtn[0].onclick = function () {
+            arr2.sort(function (a,b) {
+                return b-a;
+            });
+            for(var i=0;i<arr2.length;i++)
+            {
+                oLi[i].getElementsByTagName('img')[0].src = arr1.img[arr2[i]];
+                oLi[i].getElementsByTagName('p')[0].innerHTML = arr1.text[arr2[i]];
+            }
+        };
+
+        oBtn[1].onclick = function () {
+            arr2.sort(function (a,b) {
+                return Math.random()-0.5;
+            });
+            for(var i=0;i<arr2.length;i++)
+            {
+                oLi[i].getElementsByTagName('img')[0].src = arr1.img[arr2[i]];
+                oLi[i].getElementsByTagName('p')[0].innerHTML = arr1.text[arr2[i]];
+            }
+        }
+    };
+
+
+
+</script>
+</body>
+
+
+</html>

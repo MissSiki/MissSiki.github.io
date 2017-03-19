@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding:0;margin:0}
+        body{background-color:#f7f7f7;margin:50px 0  0 0;
+        }
+        .wrap{width:1000px;margin: 0 auto;height: 500px;}
+        .list{width:300px;height: 190px;margin:10px;padding: 5px;float: left;text-align: center;background-color: #ffffff;overflow: hidden;
+            position: relative;transform-style: preserve-3d;}
+        .list .img{width: 300px;height:190px;position: absolute;
+            left:0;top:5px;overflow: hidden;margin-left: 5px;transform:translateZ(150px);transition: all .5s}
+        .list  .img img{width: 100%;height: 100%;}
+        .list .text{width:100%;height: 50px;line-height: 50px;background-color: rgba(239, 239, 239, 0.43);
+            transition: all .5s;position: absolute;bottom:0;right: 0;font-size: 18px;}
+        .list .back{  box-sizing: border-box;padding: 15px 5px;text-align: center;position: absolute;top:0;
+        background-color: #fff;transition: all .5s ;line-height: 1.5;font-size: 14px;}
+        .list .back h4{font-size: 18px;line-height:2;font-weight: normal;}
+        .list .m{height: 50%;width: 100%;left: 0;transform:perspective(600px) rotateX(90deg);transform-origin: top center 0;}
+        .list .l{height: 200px;width: 150px;transform:perspective(600px) rotateY(90deg);left: 0;transform-origin: 0 0;}
+        .list .r{height: 200px;width: 150px;transform:perspective(600px) rotateY(-90deg);right: 0;transform-origin: right;}
+
+
+        .container{width:1180px;margin: 0 auto;background-color: #f7f7f7;
+            position: relative;height: 538px;}
+        .pic_list{position: absolute;padding: 10px;box-sizing: border-box;text-align: center;transition: all .6s;background-color: #fff;}
+        .pic_list:nth-of-type(1){width:220px;height: 268px;left: 14%;margin-left:-110px;top:160px;z-index: 1}
+        .pic_list:nth-of-type(2){width:260px;height: 308px;left: 26%;margin-left:-130px;top:140px;z-index: 2}
+        .pic_list:nth-of-type(3){width:300px;height: 348px;left: 38%;margin-left:-150px;top:120px;z-index: 3}
+        .pic_list:nth-of-type(4){width:340px;height: 388px;left: 50%;margin-left:-170px;top:100px;z-index: 4}
+        .pic_list:nth-of-type(5){width:300px;height: 348px;left: 62%;margin-left:-150px;top:120px; z-index: 3}
+        .pic_list:nth-of-type(6){width:260px;height: 308px;left: 74%;margin-left:-130px;top:140px; z-index: 2}
+        .pic_list:nth-of-type(7){width:220px;height: 268px;left: 86%;margin-left:-110px;top:150px;z-index: 1 }
+        .pic_list .service_image{position:relative;width: calc(100%-20px);height: calc(60%-20px);overflow: hidden;margin: 10px;}
+        .pic_list .service_image img{width:100%;}
+        .pic_list h4{line-height: 50px;font-size: 18px;font-weight: normal;color:#313435;}
+        .pic_list p{color:#9a9a9a;font-size: 13px;line-height: 30px;}
+        #prev,#next{position: absolute;top:50%;height: 50px;width: 30px;
+            font-size: 12px;text-decoration: none;color: #ff4f0b;}
+        #prev{left:5px;background: url("imgs/left_case_icon.png") no-repeat center}
+        #next{right:5px;background: url("imgs/right_case_icon.png") no-repeat center}
+        .mask{width:100%;height:100%;position: absolute;left: 0; top:0;background-color:#000;opacity:.35;transition: all .8s ease;  }
+        .pic_list:nth-of-type(4) .mask{background-color:#fff;opacity:.35;}
+        h1{text-align: center;color: #ff1c82;font-weight: normal;height: 50px;line-height: 50px;}
+    </style>；
+    <script type="text/javascript" src="../jquery-1.8.3.min.js"></script>
+
+</head>
+<body>
+<h1>3d翻转效果</h1>
+    <div class="wrap">
+        <div class="list" id="list">
+            <div class="img">
+                <img src="imgs/PIV_img-1.png">
+            </div>
+            <div class="back l" id="back">
+                <h4>身份识别</h4>
+                <p>自动识别身份证上所有信息</p>
+                <p>识别速度不到1秒</p>
+                <p>识别准确率高达99.1%</p>
+            </div>
+            <div class="text">
+                身份识别
+            </div>
+        </div>
+        <div class="list">
+            <div class="img">
+                <img src="imgs/note_img-2.png">
+            </div>
+            <div class="back m">
+                <h4>短信提醒</h4>
+                <p>自动触发短信， 短信定期提醒， 短信催收</p>
+            </div>
+            <div class="text">
+                短信提醒
+            </div>
+        </div>
+        <div class="list" style="right:0">
+            <div class="img" style="right:0">
+                <img src="imgs/car_img-3.png">
+            </div>
+            <div class="back r">
+                <h4>车辆评估</h4>
+                <p>海量数据，</p>
+                <p>车况定量定价分析，</p>
+                <p>降低收益风险.</p>
+            </div>
+            <div class="text" style="right:0">
+                车辆评估
+            </div>
+        </div>
+        <div class="list">
+            <div class="img">
+                <img src="imgs/loan_img-4.png">
+            </div>
+            <div class="back l">
+                <h4>贷款审核</h4>
+                <p>运用大数据技术，失</p>
+                <p> 降低风险，</p>
+                <p> 减少资金损失</p>
+            </div>
+            <div class="text">
+                贷款审核
+            </div>
+        </div>
+        <div class="list ">
+            <div class="img">
+                <img src="imgs/monitoring_img-5.png">
+            </div>
+            <div class="back m">
+                <h4>反欺诈</h4>
+                <p>监控全网欺， 收集分析情报 及时预警风险</p>
+
+            </div>
+            <div class="text">
+                反欺诈
+            </div>
+        </div>
+        <div class="list" style="right:0">
+            <div class="img" style="right:0">
+                <img src="imgs/signature_img-6.png">
+            </div>
+            <div class="back r">
+                <h4>电子签章</h4>
+                <p>合法合规</p>
+                <p>简单易用</p>
+            </div>
+            <div class="text" style="right:0">
+                电子签章
+            </div>
+        </div>
+    </div>
+<h1>轮播效果</h1>
+    <div class="container" id="container">
+        <div class="pic_list">
+            <div class="mask"></div>
+                <div class="service_image">
+                    <img src="imgs/service_3_img.png">
+                </div>
+                <h4>天堂硅谷资产管理集团</h4>
+                <p>投资理财，资产管理</p>
+
+        </div>
+        <div class="pic_list">
+            <div class="mask"></div>
+                <div class="service_image">
+                    <img src="imgs/service_2_img.png">
+                </div>
+                <h4>金鼎控股</h4>
+                <p>为信财富体的经营主体</p>
+
+        </div>
+        <div class="pic_list">
+            <div class="mask"></div>
+                <div class="service_image">
+                    <img src="imgs/service_1_img.png">
+                </div>
+                <h4>贝兜金服</h4>
+                <p>占领市场先机引领市场</p>
+
+        </div>
+        <div class="pic_list">
+            <div class="mask"></div>
+                <div class="service_image">
+                    <img src="imgs/service_3_img.png">
+                </div>
+                <h4>天堂硅谷资产管理集团</h4>
+            <p>投资理财，资产管理</p>
+        </div>
+        <div class="pic_list">
+            <div class="mask"> </div>
+                <div class="service_image">
+                    <img src="imgs/service_2_img.png">
+                </div>
+                <h4>金鼎控股</h4>
+                <p>为信财富体的经营主体</p>
+
+        </div>
+        <div class="pic_list">
+            <div class="mask"></div>
+                <div class="service_image">
+                    <img src="imgs/service_1_img.png">
+                </div>
+                <h4>贝兜金服</h4>
+                <p>占领市场先机引领市场</p>
+
+        </div>
+        <div class="pic_list">
+            <div class="mask"></div>
+                <div class="service_image">
+                    <img src="imgs/service_2_img.png">
+                </div>
+                <h4>金鼎控股</h4>
+                <p>为信财富体的经营主体</p>
+
+        </div>
+
+        <a href="javascript:;" id="prev"></a>
+        <a href="javascript:;" id="next"></a>
+
+    </div>
+
+
+
+
+
+
+
+    <script>
+        $(function () {
+            $('.list').hover(function () {
+                var _index = $(this).index();
+                if (_index % 3 == 0) {
+                    $('.img').eq(_index).css({'transform': 'translateX(150px)'});
+                    $('.text').eq(_index).css({'width': '150px', 'height': 0});
+                    $('.back').eq(_index).css('transform', 'perspective(600px) rotateY(0deg)')
+                } else if (_index % 3 == 1) {
+                    $('.text').eq(_index).css({'height': 0});
+                    $('.back').eq(_index).css('transform', 'perspective(600px) rotateX(0deg)')
+                } else {
+                    $('.img').eq(_index).css({'transform': 'translateX(-150px)'});
+                    $('.text').eq(_index).css({'width': 150, 'height': 0});
+                    $('.back').eq(_index).css('transform', 'perspective(600px) rotateY(0deg)')
+                }
+            }, function () {
+                var _index = $(this).index();
+                if (_index % 3 == 0) {
+                    $('.img').eq(_index).css({'transform': 'translateX(0)'});
+                    $('.text').eq(_index).css({'width': 330, 'height': 50});
+                    $('.back').eq(_index).css('transform', 'perspective(600px) rotateY(90deg)')
+                } else if (_index % 3 == 1) {
+                    $('.text').eq(_index).css({'height': 50});
+                    $('.back').eq(_index).css('transform', 'perspective(600px) rotateX(-90deg)')
+                } else {
+                    $('.img').eq(_index).css({'transform': 'translateX(0)'});
+                    $('.text').eq(_index).css({'width': 330, 'height': 50});
+                    $('.back').eq(_index).css('transform', 'perspective(600px) rotateY(-90deg)')
+                }
+            });
+
+
+
+            //轮播
+            var Nowindex = 3;
+            var arr =[
+                    {'width':'220px','height': '268px','left': '14%','margin-left':'-110px','top':'160px','z-index': 1},
+                    {'width':'260px','height': '308px','left': '26%','margin-left':'-130px','top':'140px','z-index': 2},
+                    {'width':'300px','height': '348px','left': '38%','margin-left':'-150px','top':'120px','z-index': 3},
+                    {'width':'340px','height': '388px','left': '50%','margin-left':'-170px','top':'100px','z-index': 4},
+                    {'width':'300px','height':'348px','left': '62%','margin-left':'-150px','top':'120px', 'z-index': 3},
+                    {'width':'260px','height': '308px','left': '74%','margin-left':'-130px','top':'140px', 'z-index': 2},
+                    {'width':'220px','height': '268px','left': '86%','margin-left':'-110px','top':'150px','z-index': 1}
+                    ];
+
+            $('#next').click(function () {
+                Nowindex++;
+                turnRight()
+            });
+
+            $('#prev').click(function () {
+                Nowindex--;
+                turnLeft()
+            });
+
+            $('#container').hover(function () {
+               clearInterval(timer)
+            },function () {
+                timer = setInterval(function () {
+                    Nowindex++;
+                    turnRight()
+                },2000);
+            });
+
+            var timer = '';
+
+            timer = setInterval(function () {
+                Nowindex++;
+                turnRight();
+            },2000);
+
+
+            $('.pic_list').hover(function () {
+                if($(this).index()!==Nowindex){
+                    $('.mask').eq($(this).index()).css('opacity',0);
+                }},function () {
+                if($(this).index()!==Nowindex) {
+                    $('.mask').eq($(this).index()).css('opacity', .35);
+                }
+            });
+
+
+            //点击事件
+            $('.pic_list').click(function () {
+              if(Nowindex>3){
+                  if($(this).index()>Nowindex)
+                  {
+                      for(var i=0;i< $(this).index()-Nowindex;i++){
+                          arrRight();
+                      }
+                  }else if($(this).index()<Nowindex){
+
+                      if(Math.abs(Nowindex -$(this).index())>3)
+                      {
+                          for(var i=0;i< $(this).index()-Nowindex+$('.pic_list').length;i++){
+                              arrRight();
+                          }
+                      }
+                      if(Math.abs(Nowindex-$(this).index())<=3)
+                      {
+                          for(var i=0;i<Nowindex - $(this).index();i++){
+                              arrLeft()
+                          }
+                      }
+                  }
+                }
+                if(Nowindex<3)
+                {
+                    if($(this).index()<Nowindex)
+                    {
+                        for(var i=0;i<Nowindex - $(this).index();i++){
+                            arrLeft()
+                        }
+                    }else if($(this).index()>Nowindex){
+
+                        if(Math.abs(Nowindex -$(this).index())>3)
+                        {
+                            for(var i=0;i< Nowindex -$(this).index() + $('.pic_list').length;i++){
+                                arrLeft()
+                            }
+                        }
+                        if(Math.abs(Nowindex -$(this).index())<=3)
+                        {
+                            for(var i=0;i< $(this).index() - Nowindex;i++){
+                                arrRight();
+                            }
+                        }
+                    }
+                }
+                if(Nowindex==3){
+                    if($(this).index()>Nowindex)
+                    {
+                        for(var i=0;i< $(this).index()-Nowindex;i++){
+                            arrRight();
+                        }
+                    }
+                    if($(this).index()<Nowindex)
+                    {
+                        for(var i=0;i<Nowindex - $(this).index();i++){
+                            arrLeft();
+                        }
+                    }
+                }
+                Nowindex = $(this).index();
+                listAnimate();
+                document.title = Nowindex +',' +$(this).index();
+            });
+
+            //向右运动
+            function turnRight() {
+                arrRight();
+                if(Nowindex >= $('.mask').length){
+                    Nowindex = 0;
+                }
+                listAnimate()
+            }
+            //向左运动
+            function turnLeft() {
+                arrLeft();
+                if(Nowindex < 0){
+                    Nowindex = $('.mask').length-1
+                }
+                listAnimate();
+            }
+
+            //运动函数
+            function listAnimate() {
+                $('.pic_list').each(function () {
+                    $(this).css(arr[$(this).index()]);
+                });
+                $('.mask').css({'background-color':'#000','opacity':0.35});
+                $('.mask').eq(Nowindex).css('opacity',0);
+            }
+
+
+            //将数组第一个排到最后
+            function  arrLeft() {
+                var arr3 = arr.shift();
+                arr.push(arr3);
+            }
+            //将数组最后一个排到第一
+            function arrRight() {
+                var arr2 = arr.pop();
+                arr.unshift(arr2);
+            }
+        });
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style type="text/css">
+        *{padding: 0;margin: 0;}
+        body{background: #3e3e3e;}
+        .scroll{width:600px;height: 144px;overflow:hidden;margin:20px auto;position: relative;border-radius: 8px;}
+        ul{list-style: none;height: 144px;width: 1520px;position: absolute;top:0;}
+        img{margin:10px 0 0;border-radius: 5px;}
+        ul li{display: inline-block;text-align: center;width: 144px;height: 144px;background: #000;margin-right:8px;color: #fff;border-radius: 8px;}
+        .text{width: 500px;padding: 20px;background: slategray;border: 1px solid slategray;margin:20px auto;}
+        .scroll_control{width:600px;height: 19px;border-radius: 10px;background: #0a0a0a;margin: 0 auto;position: relative}
+        .left{position: absolute;top:0;left:0;height: 19px;width: 28px;background: url("images/03.gif") no-repeat; cursor: pointer;}
+        .scroll_control div.leftstop{cursor: default; background-position: 0 -19px;}
+        .scroll_control div.rightstop{cursor: default;background-position: right -19px;}
+        .right{position: absolute;top:0;right:0;height: 19px;width: 28px;background: url("images/03.gif") no-repeat;background-position: right 0;cursor: pointer;}
+        .scroll_center{width: 150px;height:15px;background: url("images/01.gif") repeat-x;position: absolute;left:0;top:1px;z-index: 999; cursor: e-resize;}
+        .center{height: 15px;margin: 0 28px;border: 1px solid #545454;position: relative;padding: 1px 0;border-width: 1px 0;cursor: pointer;}
+        .l,.r{ ;width: 6px;height: 15px;position: absolute;top:0;}
+        .l{background: url("images/02.gif") no-repeat;left: -6px;}
+        .r{background: url("images/02.gif") right 0;right: -6px;background-position: right 0;}
+    </style>
+    <script>
+        window.onload = function () {
+            var scroll_center = document.getElementsByClassName("scroll_center")[0];
+            var left = document.getElementsByClassName("left")[0];
+            var right = document.getElementsByClassName("right")[0];
+            var scroll = document.getElementsByClassName("scroll")[0];
+            var oUl = scroll.getElementsByTagName("ul")[0];
+            var aLi  = document.getElementsByTagName("li");
+            var center  = document.getElementsByClassName("center")[0];
+            var maxL = center.offsetWidth - scroll_center.offsetWidth
+            var timer = null;
+            var iScale = 0;
+            var disX = 0;
+            var i = 0;
+            var  oBox =document.getElementById("box");
+            //图片列表容器动态设置宽度
+            //拖动滚动条
+            scroll_center.onmousedown = function (event) {
+                var event = event || window.event;
+                disX = event.clientX - scroll_center.offsetLeft;
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    var iL = event.clientX - disX;
+                    iL <= 0 && (iL = 0);
+                    iL >= maxL && (iL = maxL);
+                    scroll_center.style.left = iL + "px";
+                    iScale = iL / maxL;
+                    return false
+                };
+
+                document.onmouseup = function () {
+                    startMove(oUl, parseInt((scroll.offsetWidth - oUl.offsetWidth + 8) * iScale));
+                    isStop();
+                    document.onmousemove = null;
+                    document.onmouseup = null
+                };
+                return false
+            };
+
+            scroll_center.onclick = function (event)
+            {
+                (event || window.event).cancelBubble = true
+            };
+
+            //滚动条左右按钮鼠标移入及键盘左右键按下事件
+            left.onmouseover = right.onmouseover = document.onkeydown = function (event)
+            {
+                clearInterval(timer);
+                var event = event || window.event;
+                var iSpeed = 0;
+                if (this == right || event.keyCode == 39)
+                {
+                    iSpeed = 10
+                }
+                else if(this == left || event.keyCode == 37)
+                {
+                    iSpeed = -10
+                }
+                timer = setInterval(function ()
+                {
+                    togetherMove(parseInt(scroll_center.style.left) + iSpeed, 1)
+                }, 30)
+            };
+            //滚动条左右按钮鼠标移开及键盘左右键抬起事件
+            left.onmouseout = right.onmouseout = document.onkeyup = function ()
+            {
+                clearInterval(timer)
+            };
+
+
+            center.onclick = function (event)
+            {
+                var iTarget = (event || window.event).clientX - scroll.offsetLeft - this.offsetLeft - scroll_center.offsetWidth / 2;
+                togetherMove(iTarget)
+            };
+
+            //鼠标滚轮事件
+            document.onmouseover = function (event)
+            {
+                event = event || window.event;
+                function mouseWheel(event)
+                {
+                    var delta = event.wheelDelta ? event.wheelDelta : -event.detail * 40
+                    var iTarget = delta > 0 ? -50 : 50;
+                    togetherMove(scroll_center.offsetLeft + iTarget)
+                }
+
+                addHandler(this, "mousewheel", mouseWheel);
+                addHandler(this, "DOMMouseScroll", mouseWheel);
+            };
+
+            //图片列表和流动条同时移动
+            function togetherMove(iTarget, buffer)
+            {
+                if (iTarget <= 0)
+                {
+                    timer && clearInterval(timer);
+                    iTarget = 0
+                }
+                else if (iTarget >= maxL)
+                {
+                    timer && clearInterval(timer);
+                    iTarget	= maxL
+                }
+                iScale = iTarget / maxL;
+                startMove(oUl, parseInt((scroll.offsetWidth - oUl.offsetWidth + 8) * iScale), function () {isStop()}, buffer);
+                startMove(scroll_center, iTarget, function () {isStop()}, buffer)
+            }
+
+
+            function startMove(obj, iTarget, fnEnd, buffer)
+            {
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function ()
+                {
+                    doMove(obj, iTarget, fnEnd, buffer)
+                }, 25)
+            };
+
+            function doMove(obj, iTarget, fnEnd, buffer)
+            {
+                var iLeft = parseInt(obj.style.left);
+                var iSpeed = (iTarget - iLeft) / (buffer || 5);
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                iLeft == iTarget ? (clearInterval(obj.timer), fnEnd && fnEnd()) : obj.style.left = iLeft + iSpeed + "px"
+            }
+            //判断滚动条是否到达边界
+            function isStop()
+            {
+                left.className = "left";
+                right.className = "right";
+                switch (scroll_center.offsetLeft)
+                {
+                    case 0:
+                        /(^|\s)leftstop(\s|$)/.test(left.className) || (left.className += " leftstop");
+                        break;
+                    case maxL:
+                        /(^|\s)rightstop(\s|$)/.test(right.className) || (right.className += " rightstop");
+                        break;
+                }
+            }
+            isStop()
+
+            function addHandler(element, type, handler)
+            {
+                return element.addEventListener ? element.addEventListener(type, handler, false) : element.attachEvent("on" + type, handler)
+            }
+        };
+
+    </script>
+</head>
+<body>
+<div class="box"id="box">
+<div class="scroll">
+    <ul style="left: 0;">
+        <li><img src="images/1.jpg"><p>iPhone 4</p></li><li><img src="images/2.jpg"><p>iPad 2</p></li><li><img src="images/3.jpg"><p>iPod touch</p></li><li><img src="images/4.jpg"><p>iPod classic</p></li><li><img src="images/5.jpg"><p>iPod shuffle</p></li><li><img src="images/6.jpg"><p>iPod nano</p></li><li><img src="images/7.jpg"><p>MacBook Air</p></li><li><img src="images/8.jpg"><p>MacBook Pro</p></li><li><img src="images/9.jpg"><p>Mac mini</p></li><li><img src="images/10.jpg"><p>Mac Pro</p></li>
+</div>
+<div class="scroll_control">
+    <div class="left"></div>
+    <div class="center">
+        <div class="scroll_center" style="left: 0;">
+            <div class="l"></div>
+            <div class="r"></div>
+        </div>
+    </div>
+    <div class="right"></div>
+</div>
+
+     <div class="text">
+         <p>功能说明：</p>
+         <p> ① 拖动滚动条，图片列表缓冲滑动至目标点；</p>
+         <p>  ② 滚动条两端鼠标移入自动滑动；
+         <p> ③ 滚动条滑动到两端自动更换为停止标识；</p>
+         <p> ④ 点击滚动条黑色背景区，滚动条及图片列表缓冲滑动至目标点；</p>
+         <p>  ⑤ 支持键盘左右键；</p>
+         <p>  ⑥ 支持鼠标滚轮。</p>
+     </div>
+</div>
+</body>
+</html>
