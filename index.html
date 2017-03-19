@@ -1,1 +1,943 @@
-ssssss
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resume</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="move.js"></script>
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="jquery.fullPage.min.js"></script>
+    <script type="text/javascript" src="echarts.min.js"></script>
+
+</head>
+<body>
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1"><span class="glyphicon glyphicon-home">Home</span></a></li>
+    <li data-menuanchor="page2"><a href="#page2"><span class=" glyphicon glyphicon-picture"></span>Demos</a></li>
+    <li data-menuanchor="page3"><a href="#page3"><span class="glyphicon glyphicon-book">Skills</span></a></li>
+    <li data-menuanchor="page4"><a href="#page4"><span class="glyphicon glyphicon-phone">Experience</span></a></li>
+    <li data-menuanchor="page5"><a href="#page5"><span class="glyphicon glyphicon-phone">Projects</span></a></li>
+    <li data-menuanchor="page6"><a href="#page6"><span class="glyphicon glyphicon-phone-alt">Contact Me</span></a></li>
+</ul>
+<div id="dowebok">
+    <div class="section clear">
+        <div class="aside" id="aside"></div>
+        <div class="home">
+            <img src="imgs/logo_color_476_180.jpg" width="119" />
+        </div>
+        <div class="text_area">
+            <div class="title" id="title">
+                <h1 id="text">HTML/CSS</h1>
+                <div class="line1 line"></div>
+                <div class="line2 line"></div>
+                <div class="line3 line"></div>
+                <div class="line4 line"></div>
+                <div class="line5 line"></div>
+                <div class="line6 line"></div>
+            </div>
+            <div class="btn">
+                <div class="prev" id="prev"><i></i></div>
+                <div class="next" id="next"><i></i></div>
+            </div>
+            <div class="introduce" id="introduce">
+                <div class="intro_text">
+                    You cannot leave ,real warrior never quits.
+                </div>
+                <div class="motion"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section clear">
+        <div class="commonwidth">
+            <div class="section_title"><div class="hr1"></div><h3>DEMO</h3><div class="hr2"></div></div>
+            <div class="demo_left">
+                <ul class="big_list clear">
+                    <li><a href="demo/demo1.html" target="_blank"><img src="imgs/demo1.jpg"><div class="big_text"><p>贪吃蛇游戏</p><p>数组保存，运动跟随</p></div></a></li>
+                    <li><a href="demo/demo2.html" target="_blank"><img src="imgs/demo2.jpg"><div class="big_text"><p>轮播图</p><p>改变透明度，和相对定位</p></div></a></li>
+                    <li><a href="demo/demo3.html" target="_blank"><img src="imgs/demo3.jpg"><div class="big_text"><p>无缝滚动</p><p>改变相对定位，填补空白区域</p></div></a></li>
+                    <li><a href="demo/demo4.html" target="_blank"><img src="imgs/demo4.jpg"><div class="big_text"><p>仿苹果桌面</p><p>鼠标进小远大</p></div></a></li>
+                </ul>
+                <ul class="small_pic clear">
+                    <li><a href="demo/demo5.html" target="_blank"><div class="small_text"><p>随机排序</p><p>利用数组排序</p></div><img src="imgs/demo5.jpg"></a></li>
+                    <li><a href="demo/demo6.html" target="_blank"><img src="imgs/demo6.jpg"><div class="small_text"><p>拖拽记住轨迹</p><p>运动轨迹保存</p></div></a></li>
+                    <li><a href="http://movie.xiaoqintools.cn/movie/list.html" target="_blank"><img src="imgs/demo7.jpg"><div class="small_text"><p>仿豆瓣电影</p><p>ajax请求</p></div></a></li>
+                    <li><a href="demo/demo7.html" target="_blank"><div class="small_text"><p>自制滚动条</p><p>滚动百分比</p></div><img src="imgs/demo8.jpg"></a></li>
+                </ul>
+
+            </div>
+            <div class="demo_right">
+                <h4>~贪吃蛇小游戏</h4>
+                <div class="carousel">
+                    <ul class='demo_list'>
+                        <li class="active"><img src="imgs/demo1.jpg"></li>
+                        <li><img src="imgs/demo2.jpg"></li>
+                        <li><img src="imgs/demo3.jpg"></li>
+                        <li><img src="imgs/demo4.jpg"></li>
+                        <li><img src="imgs/demo5.jpg"></li>
+                        <li><img src="imgs/demo6.jpg"></li>
+                        <li><img src="imgs/demo7.jpg"></li>
+                        <li><img src="imgs/demo8.jpg"></li>
+                    </ul>
+                </div>
+                <div class="demo_intru">
+                    <p>仿贪吃蛇小游戏；</p>
+                </div>
+                <a class="btn" target="_blank">link</a>
+            </div>
+        </div>
+    </div>
+    <div class="section clear">
+        <div class="section_title"><div class="hr1"></div><h3>PROJECTS</h3><div class="hr2"></div></div>
+        <div class="projects_left">
+        <ul class="projects_list clear" id="projects_list">
+            <li><img src="imgs/pro1.png"><div class="list_mask"><p>使用angularjs路由管理搭建二级菜单的单页面项目框架，封装时间插件等</p></div></li>
+            <li><img src="imgs/pro2.png"><div class="list_mask"><p>该项目主要是完成<br>阳光音基音乐培训学校网页开发，全站开发。</p>
+            </div></li>
+            <li><img src="imgs/pro3.png"><div class="list_mask"><p>该项目主要是完成跃华官方网站的开发，全站开发。</p>
+            </div></li>
+
+        </ul>
+        <ul class="projects_introduce">
+            <li><h5>汇诚金服</h5><p>专注于汽车金融的p2p平台</p></li>
+            <li><h5>阳光音基</h5><p>音乐培训学校官网</p></li>
+            <li><h5>跃华官网</h5><p>主营电线电缆的官方网站</p></li>
+        </ul>
+        </div>
+        <div class="projects_right">
+            <div class="projects_text">
+            <h4>~汇城金服</h4>
+            <p>PC端网站开发:<br>主力开发，熟练运用html,css3,jquery编写网页，ajax实现数据交互，freemarker,handlebars模板引擎实现混编, requirejs模块化管理
+            </p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="section clear" style="background-color: rgba(12, 12, 12, 0.82)">
+        <div class="section_title"><div class="hr1"></div><h3>SKILLS</h3><div class="hr2"></div></div>
+        <div class="skill_left">
+            <div class="html">
+                <div class="icon">
+                    <span class="glyphicon glyphicon-certificate"></span>
+                </div>
+                <div class="skill_intro">
+                    <h5>html</h5>
+                    <p> HTML来建立自己的 WEB 站点，构建web，移动端等主页。利用html语义化概念，编写最基本的布局。
+                    </p>
+                </div>
+            </div>
+            <div class="css">
+                <div class="icon">
+                <span class="glyphicon glyphicon-music"></span>
+            </div>
+                <div class="skill_intro">
+                    <h5>css</h5>
+                    <p>CSS同时控制多重网页的样式和布局。改变站点中所有页面的布局和外观，利用css巧妙的将页面设计还原，会使用css3产生各种炫酷的2d，3d效果，解决页面兼容以及各种响应式布局。
+                    </p>
+                </div>
+            </div>
+            <div class="javascript">  <div class="icon">
+                <span class="glyphicon glyphicon-tag"></span>
+            </div>
+                <div class="skill_intro">
+                    <h5>javascript</h5>
+                    <p>利用JavaScript脚本语言，用于HTML和web，更可广泛用于服务器、PC、笔记本电脑、平板电脑和智能手机等设备。
+                    </p>
+                </div>
+            </div>
+            <div class="http">  <div class="icon">
+                <span class="glyphicon glyphicon-tree-conifer"></span>
+            </div>
+                <div class="skill_intro">
+                    <h5>http</h5>
+                    <p>了解http协议，了解HTTP工作原理，以及请求方法，请求后的状态码，会使用ajax实现http请求
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill_right">
+            <div class="git">  <div class="icon">
+                <span class="glyphicon glyphicon-paperclip"></span>
+            </div>
+                <div class="skill_intro">
+                    <h5>git</h5>
+                    <p>通过git管理文档，熟悉git的命令语句。
+                    </p>
+                </div>
+            </div>
+            <div class="jquery">  <div class="icon">
+                <span class="glyphicon glyphicon-headphones"></span>
+            </div>
+                <div class="skill_intro">
+                    <h5>jquery</h5>
+                    <p> jQuery 是目前最流行的 JS 框架，一般网页中，会熟练使用jQuery框架，减少网页的代码。达到更高效率
+                    </p>
+                </div>
+            </div>
+            <div class="angular">  <div class="icon">
+                <span class="glyphicon glyphicon-globe"></span>
+            </div>
+                <div class="skill_intro">
+                    <h5>angular</h5>
+                    <p>AngularJS 构建一个单一页面应用程序，单一页面程序选择使用angular，减少dom元素的操作，利用angular路由机制实现单一页面应用。
+                    </p>
+                </div>
+            </div>
+            <div class="bootstranp">  <div class="icon">
+                <span class="glyphicon glyphicon-fire"></span>
+            </div>
+                <div class="skill_intro">
+                    <h5>bootstrap</h5>
+                    <p>前端框架，用于快速开发 Web 应用程序和网站，会使用bootstrap实现各种布局，并且使用插件实现各种炫酷的效果，主要应用在响应式布局。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+       <!--  <div class="pot">
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+
+       <div class="skills">
+            <ul class="skills_list">
+                <li class="round"></li>
+                <li class="round"></li>
+                <li class="round"></li>
+                <li class="round"></li>
+            </ul>
+            <ul class="skills_name">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        -->
+    </div>
+    <div class="section clear">
+        <div class="section_title"><div class="hr1"></div><h3>EXPERIENCE</h3><div class="hr2"></div></div>
+        <div class="work_left">
+
+            <div class="year">2016</div>
+            <div class="year">2015</div>
+        </div>
+        <div class="work_right">
+            <div class="work_introduce">
+                <h5>杭州蜜帅文化创意有限公司</h5>
+                <p>负责公司各业务的前端HTML、Javascript、AJAX前端开发；</p>
+                <p>负责整体页面结构及样式层结构的设计、优化</p>
+                <p>有效地解决浏览器兼容问题并监督实施浏览器兼容测试标准，保证页面兼容性；</p>
+                <p>与后台开发工程师协作，完成各种数据交互、页面开发、动态信息展现和用户的互动；</p>
+                <p>Web前端新技术的学习和开发，持续优化呈现，提升用户体验。</p>
+            </div>
+            <div class="work_introduce">
+                <h5>浙江歌薇科技有限公司</h5>
+                <p>负责公司各业务的前端HTML、Javascript、AJAX前端开发；</p>
+                <p>负责整体页面结构及样式层结构的设计、优化</p>
+                <p>有效地解决浏览器兼容问题并监督实施浏览器兼容测试标准，保证页面兼容性；</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="section clear">
+        <div class="mask">
+            <div class="mask_box">
+                <div class="section_title"><div class="hr1"></div><h3>CONTACT ME</h3><div class="hr2"></div></div>
+                <div class="information_box">
+                    <h4>information</h4>
+                    <div class="h4_line"></div>
+                    <div class="information" id="information">
+                        <p><span class="glyphicon glyphicon-user"></span><span>Name：lisiqi</span></p>
+                        <p><span class="glyphicon glyphicon-heart"></span><span>Sex：famela</span></p>
+                        <p><span class="glyphicon glyphicon-earphone"></span><span>Tel：132-8833-0447</span></p>
+                        <p><span class="glyphicon glyphicon-comment"></span><span>QQ：3215142130</span></p>
+                        <p><span class="glyphicon glyphicon-phone-alt"></span><span>E_Mail：3215142130@qq,com</p>
+                    </div>
+                </div>
+                <div class="pic_box">
+                    <div class="picture"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    //首页背景图更换，及动画，js，未改jQuery
+    window.onload = function () {
+        var oAider = document.getElementById('aside');
+        var oBg = oAider.getElementsByClassName('bg');
+        var arr={
+            'imgs':['url("imgs/indian_guy2.jpg")','url("imgs/glasses_guy.jpg")','url("imgs/aa_woman.jpg")','url("imgs/young_girl.jpg")'],'texts':['PROJECTS','SKILLS','ABOUT ME','CONTACT ME'],'intro':['You cannot leave ,real warrior never quits.','If you can fight , you are lucky.',"I'm the type of person,if you ask me a question, and I don't konw the answer,I'm gonna to tell you that I don't konw.But I bet you what: I konw how to find the answer,and I'll find the answer","You got a dream, you gotta protect it. People can't do something themselves,they wanna tell you you can't do it.If you want something, go get it. Period."]
+        };
+
+        var a = 0;
+        var timer = '';
+        var timer2='';
+        var b = 0;
+        var oLine = document.getElementsByClassName('line');
+        var oInt = document.getElementById('introduce');
+        var oIntDiv = oInt.getElementsByClassName('intro_text')[0];
+        var oTit = document.getElementById('title');
+        var oH1 = document.getElementById('text');
+        var oPrev = document.getElementById('prev');
+        var  oNext = document.getElementById('next');
+        var  oMore = document.getElementById('more');
+        var Now = 0;
+        var oUlpic= document.getElementById('projects_list');
+        var oListpic=oUlpic.getElementsByTagName('li');
+        var arr2 = [];
+
+        oPrev.onclick = function () {
+            if(a == 0) {
+            clearInterval(timer2);
+            b--;
+            upDowm();
+            timer2 = setInterval(function () {
+                b++;
+                upDowm()
+            },3000);}
+        };
+
+        oInt.onmouseover = function () {
+            clearInterval(timer2);
+        };
+
+
+        oInt.onmouseout = function () {
+            timer2 = setInterval(function () {
+                b++;
+                upDowm()
+            },3000);
+        };
+
+        oNext.onclick = function () {
+            if(a == 0) {
+                clearInterval(timer2);
+                b++;
+                upDowm();
+                timer2 = setInterval(function () {
+                    b++;
+                    upDowm()
+                },3000);
+            }
+
+        };
+
+
+        for(var i=0;i<13;i++)
+        {
+            var aDiv = document.createElement('div');
+            aDiv.className = 'bg';
+            oAider.appendChild(aDiv);
+            aDiv.style.left = i*100/13+'%';
+            aDiv.style.width = 100/13+'%';
+            aDiv.style.height =100 + '%';
+        }
+
+        var ol = (1920 - parseInt(getStyle(oAider,'width')))/2;
+        var ot = (1350 - parseInt(getStyle(oAider,'height')))/2;
+        for(var j=0;j<oBg.length;j++)
+        {
+            oBg[j].style.position = 'absolute';
+            oBg[j].style.backgroundPosition ='left '+ (-j*parseInt(getStyle(oAider,'width'))/13 - ol )+'px top '+( -ot) +'px';
+            oBg[j].style.backgroundImage = arr.imgs[0];
+        }
+
+
+
+
+        function upDowm() {
+            for(var j=0;j<oBg.length;j++)
+            {
+                if(j%2 == 0)
+            {
+                oBg[j].style.top = 0;
+
+            }else{
+                    oBg[j].style.bottom = 0;
+                }
+            }
+            all();
+        }
+
+        timer2 = setInterval(function () {
+                    b++;
+                    upDowm()
+                },5000);
+
+        function all() {
+            startMove(oInt,{'opacity':0});
+            startMove(oTit,{'opacity':0});
+            clearInterval(timer);
+            if(b<0)
+            {
+                b=arr.imgs.length-1
+            }
+            if(b>=arr.imgs.length)
+            {
+                b = 0
+            }
+            bg();
+        }
+
+        function bg(){
+            timer = setInterval(function () {
+                oBg[a].style.backgroundImage = arr.imgs[b];
+                oBg[a].style.height = '90%';
+                startMove(oBg[a],{'height':parseInt(getStyle(oAider,'height'))});
+                a++;
+                if (a>=oBg.length)
+                {
+                    a = 0;
+                    clearInterval(timer);
+                    line();
+                }
+            },50);
+        }
+
+        function  line() {
+            startMove(oTit,{'opacity':100});
+            oIntDiv.innerHTML = arr.intro[b];
+            oH1.innerHTML = arr.texts[b];
+            for(var i=0;i<oLine.length;i++){
+
+                if(i==1 || i==4)
+                {
+
+                    var oH = parseInt(getStyle(oLine[i],'height'));
+                    oLine[i].style.height = 0;
+                    startMove(oLine[i],{'height':oH},function (i) {
+                        startMove(oInt,{'opacity':100});
+                        startMove(oLine[i],{'height':0})
+                    })
+                }else{
+
+                    var oW= parseInt(getStyle(oLine[i],'width'));
+                    oLine[i].style.width = 0;
+                    startMove(oLine[i],{'width':oW},function (i) {
+                        startMove(oInt,{'opacity':100});
+                        startMove(oLine[i],{'width':0})
+                    })
+                }
+            }
+        }
+
+        window.onresize = function () {
+            var ol = (1920 - parseInt(getStyle(oAider,'width')))/2;
+            var ot = (1350 - parseInt(getStyle(oAider,'height')))/2;
+            for(var j=0;j<oBg.length;j++)
+            {
+                oBg[j].style.backgroundPosition ='left '+ (-j*parseInt(getStyle(oAider,'width'))/13 - ol )+'px top '+( -ot) +'px';
+            }
+        }
+    };
+    function getStyle(obj,attr){
+        if(obj.currentStyle){
+            return obj.currentStyle[attr];
+        }
+        else{
+            return getComputedStyle(obj,false)[attr];
+        }
+    }
+</script>
+        <script>
+
+
+            /*
+                        var myChart = echarts.init(document.getElementsByClassName('round')[0]);
+                        option = {
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b}: {c} ({d}%)"
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                x: 'left',
+                                data:['90%','ps']
+                            },
+                            series: [
+                                {
+                                    name:'skills',
+                                    type:'pie',
+                                    radius: ['50%', '70%'],
+                                    avoidLabelOverlap: false,
+                                    label: {
+                                        normal: {
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            show: true,
+                                            textStyle: {
+                                                fontSize: '30',
+                                                fontWeight: 'bold'
+                                            }
+                                        }
+                                    },
+                                    labelLine: {
+                                        normal: {
+                                            show: false
+                                        }
+                                    },
+                                    data:[
+                                        {value:90, name:'90%'},
+                                        {value:10, name:'PS'},
+                                    ]
+                                }
+                            ]
+                        };
+                        myChart.setOption(option);
+
+                        var myChart1 = echarts.init(document.getElementsByClassName('round')[1]);
+                        option1 = {
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b}: {c} ({d}%)"
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                x: 'left',
+                                data:['90%','ps']
+                            },
+                            series: [
+                                {
+                                    name:'skills',
+                                    type:'pie',
+                                    radius: ['50%', '70%'],
+                                    avoidLabelOverlap: false,
+                                    label: {
+                                        normal: {
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            show: true,
+                                            textStyle: {
+                                                fontSize: '30',
+                                                fontWeight: 'bold'
+                                            }
+                                        }
+                                    },
+                                    labelLine: {
+                                        normal: {
+                                            show: false
+                                        }
+                                    },
+                                    data:[
+                                        {value:90, name:'90%'},
+                                        {value:10, name:'PS'},
+                                    ]
+                                }
+                            ]
+                        };
+                        myChart1.setOption(option);
+
+
+                        var myChart3 = echarts.init(document.getElementsByClassName('round')[3]);
+                        option3 = {
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b}: {c} ({d}%)"
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                x: 'left',
+                                data:['90%','ps']
+                            },
+                            series: [
+                                {
+                                    name:'skills',
+                                    type:'pie',
+                                    radius: ['50%', '70%'],
+                                    avoidLabelOverlap: false,
+                                    label: {
+                                        normal: {
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            show: true,
+                                            textStyle: {
+                                                fontSize: '30',
+                                                fontWeight: 'bold'
+                                            }
+                                        }
+                                    },
+                                    labelLine: {
+                                        normal: {
+                                            show: false
+                                        }
+                                    },
+                                    data:[
+                                        {value:90, name:'90%'},
+                                        {value:10, name:'PS'},
+                                    ]
+                                }
+                            ]
+                        };
+                        myChart3.setOption(option);
+
+                        var myChart2 = echarts.init(document.getElementsByClassName('round')[2]);
+                        option1 = {
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b}: {c} ({d}%)"
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                x: 'left',
+                                data:['90%','ps']
+                            },
+                            series: [
+                                {
+                                    name:'skills',
+                                    type:'pie',
+                                    radius: ['50%', '70%'],
+                                    avoidLabelOverlap: false,
+                                    label: {
+                                        normal: {
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            show: true,
+                                            textStyle: {
+                                                fontSize: '30',
+                                                fontWeight: 'bold'
+                                            }
+                                        }
+                                    },
+                                    labelLine: {
+                                        normal: {
+                                            show: false
+                                        }
+                                    },
+                                    data:[
+                                        {value:90, name:'90%'},
+                                        {value:10, name:'PS'},
+                                    ]
+                                }
+                            ]
+                        };
+                        myChart2.setOption(option);
+
+            */
+
+            var arr4 = {
+                title:['汇城金服','阳光音基','跃华官网'],
+                text:['PC端网站开发:<br>主力开发，熟练运用html,css3,jquery编写网页，ajax实现数据交互，freemarker,handlebars模板引擎实现混编, requirejs模块化管理','全站开发:<br>熟练运用CSS3完成效果展示，配合使用jQuery完成整个效果','全站开发:<br>与后台开发工程师密切配合，熟练运用ajax实现数据交互，以及动态更新']
+            };
+
+
+            var arr5 = {
+                imgs:['imgs/demo1.jpg', 'imgs/demo2.jpg','imgs/demo3.jpg','imgs/demo4.jpg','imgs/demo5.jpg','imgs/demo6.jpg','imgs/demo7.jpg','imgs/demo8.jpg'],
+                title:['贪吃蛇小游戏', '轮播图','无缝滚动','仿苹果桌面','随机排序','拖拽记住运动轨迹','仿豆瓣电影','自制滚动条'],
+                text:['1、仿贪吃蛇小游戏<br>2、纯原生js手写代码<br>3、利用蛇头运动时产生的运动轨迹,保存在一个数组里<br>4、每增加一节蛇身，蛇身都跟随蛇头以数组里的运动轨迹。',
+                    '1、轮播图列表最常见的各种轮播效果<br>2、利用透明度产生淡入淡入，利用左右移动产生轮播<br>3、以及到最后一张图片，反向运动',
+                    '1、一般网站常见应用demo<br>2、图片在运动时，后续用同样的图片填补运动时的空白<br>3、实现图片无缝滚动，自然连接',
+                    '1、仿苹果桌面菜单栏<br>2、在一定范围内，利用鼠标离各个菜单栏的距离来让菜单项变大变小<br>3、近大远小',
+                    '1、把图片列表的index值存入数组内<br>2、利用数组的随机排序方法。将对应index的列表顺序随机排序',
+                    '1、在拖拽的基础上衍生的两种拖拽效果<br>2、一种在利用鼠标移动运动产生的距离，实时改变拖拽元素的运动。<br>3、一种是利用鼠标点击之后，鼠标移动的运动轨迹存在数组内，鼠标抬起，拖拽元素通过数组内的运动数据运动',
+                    '1、仿豆瓣电影列表<br>2、每天12点后台数据更新，运用ajax实现数据异步交互<br>3、将获取的数据通过回调函数展示出电影列表<br>4、注册、登录之后存取cookie<br>5、登录之后可以查看个人信息、收藏电影列表，查看收藏的电影',
+                    '1、仿苹果桌面菜单栏<br>2、在一定范围内，利用鼠标离各个菜单栏的距离来让菜单项变大变小<br>3、近大远小'
+                ],
+                href:['demo/demo1.html', 'demo/demo2.html','demo/demo3.html','demo/demo4.html','demo/demo5.html','demo/demo6.html','http://movie.xiaoqintools.cn/movie/list.html','demo/demo8.html'],
+            };
+
+            var c = 0;
+            var timer3 ='';
+
+            timer3 = setInterval(function () {
+                        carousel()
+            },4000);
+
+            //自动轮播函数
+            carousel ();
+            function carousel() {
+                if(c>=arr5 .imgs.length)
+                {
+                    c=0;
+                }
+                $('.demo_right').eq(0).find('p').html(arr5.text[c]);
+                $('.demo_right').eq(0).find('h4').html(arr5.title[c]);
+                $('.demo_list').eq(0).animate({'left':-360*c},1000);
+                $('.demo_right').eq(0).find('a').attr('href',arr5.href[c]);
+                c++;
+            }
+            $('.demo_list').eq(0).find('li').each(function () {
+                $(this).find('img').attr('src',arr5.imgs[$(this).index()]);
+            });
+
+
+            $('.projects_list').eq(0).find('li').hover(
+                    function () {
+                        $('.projects_right').eq(0).find('h4').html(arr4.title[$(this).index()]);
+                        $('.projects_right').eq(0).find('p').html(arr4.text[$(this).index()])
+                    });
+
+            //项目图片1
+           $('.projects_list').eq(0).find('li').eq(0).hover(function () {
+               $(this).css('transform','translateX(0px)');
+               $('.projects_list').eq(0).find('li').eq(1).css('transform','translateY(50px)');
+               $('.projects_list').eq(0).find('li').eq(2).css('transform','translateY(-120px)');
+               $('.projects_introduce').eq(0).find('li').eq(1).css('transform','translateY(20px)');
+               $('.projects_introduce').eq(0).find('li').eq(2).css('transform','translateY(-120px)')
+           },function () {
+               $(this).css('transform','translateX(0px)');
+               $('.projects_list').eq(0).find('li').eq(1).css('transform','translateY(0)');
+               $('.projects_list').eq(0).find('li').eq(2).css('transform','translateY(0)');
+               $('.projects_introduce').eq(0).find('li').eq(1).css('transform','translateY(0)');
+               $('.projects_introduce').eq(0).find('li').eq(2).css('transform','translateY(0)')
+           });
+
+            //项目图片2
+            $('.projects_list').eq(0).find('li').eq(1).hover(function () {
+                $(this).css('transform','translateY(120px)');
+
+                $('.projects_list').eq(0).find('li').eq(0).css('transform','translateY(-80px)');
+                $('.projects_list').eq(0).find('li').eq(2).css('transform','translateY(-80px)');
+                $('.projects_introduce').eq(0).find('li').eq(0).css('transform','translateY(-80px)');
+                $('.projects_introduce').eq(0).find('li').eq(1).css('transform','translateY(80px)');
+                $('.projects_introduce').eq(0).find('li').eq(2).css('transform','translateY(-80px)')
+            },function () {
+                $(this).css('transform','translateY(0)');
+                $('.projects_list').eq(0).find('li').eq(0).css('transform','translateY(0)');
+                $('.projects_list').eq(0).find('li').eq(2).css('transform','translateY(0)');
+                $('.projects_introduce').eq(0).find('li').eq(0).css('transform','translateY(0)');
+                $('.projects_introduce').eq(0).find('li').eq(1).css('transform','translateY(0)');
+                $('.projects_introduce').eq(0).find('li').eq(2).css('transform','translateY(0)')
+            });
+
+            //项目图片3
+            $('.projects_list').eq(0).find('li').eq(2).hover(function () {
+                $(this).css('transform','translateX(0px)');
+                $('.projects_list').eq(0).find('li').eq(1).css('transform','translateY(50px)');
+                $('.projects_list').eq(0).find('li').eq(0).css('transform','translateY(-120px)');
+                $('.projects_introduce').eq(0).find('li').eq(1).css('transform','translateY(20px)');
+                $('.projects_introduce').eq(0).find('li').eq(0).css('transform','translateY(-120px)')
+            },function () {
+                $(this).css('transform','translateX(0px)');
+                $('.projects_list').eq(0).find('li').eq(1).css('transform','translateY(0)')
+                $('.projects_list').eq(0).find('li').eq(0).css('transform','translateY(0)')
+                $('.projects_introduce').eq(0).find('li').eq(1).css('transform','translateY(0)')
+                $('.projects_introduce').eq(0).find('li').eq(0).css('transform','translateY(0)')
+            });
+
+
+            $('#dowebok').fullpage({
+                anchors: ['page1', 'page2', 'page3', 'page4' , 'page5'],
+                'navigation': true,
+                menu: '#menu',
+                scrollingSpeed: 700,
+                //q切入时fullpage回调函数
+                afterLoad: function(anchorLink, index){
+                    if(index == 2){
+                        $('.big_list').eq(0).find('li').each(function () {
+                            if($(this).index() == 0 || $(this).index() == 3){
+                                $(this).css({'transform':'translateY(0)','opacity':1})
+                            }
+                            if($(this).index() == 1 || $(this).index() == 2){
+                                $(this).css({'transform':'translateX(0)','opacity':1})
+                            }
+                        });
+                        $('.small_pic').eq(0).find('li').each(function () {
+                                $(this).css({'transform':'translateX(0)','opacity':1})
+                        });
+                        $('.demo_right').eq(0).find('h4, p').each(function () {
+                            $(this).css({'transform':'translateX(0)','opacity':1});
+                        });
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'})
+                        $('.section').eq(index-1).find('.carousel').css({'transform':'translateY(0)','opacity':1});
+                        $('.demo_right').eq(0).find('a').css({'transform':'translateY(0)','opacity':1});
+                    }
+                    if(index == 3){
+                        $('.projects_list').eq(0).find('li').each(function () {
+                            $(this).css({'transform':'translateX(0)','opacity':1})
+                        })
+                        $('.projects_introduce').eq(0).find('li').each(function () {
+                            $(this).css({'transform':'translateX(0)','opacity':1})
+                        });
+                        $('.projects_right').eq(0).find('h4, p').each(function () {
+                            $(this).css({'transform':'translateX(0)','opacity':1});
+                    });
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'});
+                        $('.section').eq(index-1).find('.projects_right').eq(0).css({'transform':'translateY(100px)','opacity':1});
+                    }
+                    if(index == 4){
+                        $('.section').eq(index-1).find('li').each(function () {
+                            $(this).css({'transform':'translateX(0)','opacity':1})
+                        });
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.pot').eq(0).find('i').each(function () {
+                            $(this).css({'transform':'translateY(0)','opacity':1});
+                        });
+                        $('.section').eq(index-1).find('.title_line').css('width','20%');
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'});
+                        $('.skill_left>div').each(function () {
+                            $(this).css({'transform':'translateX(0)','opacity':1,'transition-delay':$(this).index()/10 + 's'});
+                        })
+                        $('.skill_right>div').each(function () {
+                            $(this).css({'transform':'translateX(0)','opacity':1,'transition-delay':$(this).index()/10 + 's'});
+                        })
+
+                    }
+                    if(index == 5){
+                        $('.year').css({'transform':'translateX(0)','opacity':1});
+                        $('.section').eq(index-1).find('.work_right').css({'opacity':1});
+                        $('.work_introduce').css({'transform':'translateX(0)','opacity':1});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'})
+                    }
+                    if(index == 6){
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('h4').css({'transform':'translateX(0)','opacity':1});
+                        $('.section').eq(index-1).find('.h4_line').css({'transform':'translateX(0)','opacity':1});
+                        $('#information').find('p').each(function () {
+                            $(this).css({'transform':'translateY(0)','opacity':1});
+                        });
+
+                        $('.section').eq(index-1).find('.picture').css({'transform':'translateX(0)','opacity':1});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'})
+
+                    }
+
+                },
+                //离开时fullpage回调函数
+                onLeave: function(index, direction){
+
+                    if(index == 4){
+                        $('.section').eq(index-1).find('li').each(function () {
+                            if($(this).index() == 0 ||$(this).index() == 2 )
+                            {
+                                $(this).css({'transform':'translateY(500px)','opacity':0,'transition':'all .5s'})
+                            }
+                            if($(this).index() == 1 ||$(this).index() == 3 ){
+                                $(this).css({'transform':'translateY(-500px)','opacity':0,'transition':'all .5s'})
+                            }
+                        });
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-300px)','opacity':0});
+                        $('.pot').eq(0).find('i').each(function () {
+                            $(this).css({'transform':'translateY(-300px)','opacity':0});
+                        })
+                        $('.section').eq(index-1).find('.title_line').css('width',0);
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
+                        $('.skill_left>div').each(function () {
+                            $(this).css({'transform':'translateX(-400px)','opacity':0,'transition-delay':$(this).index()/10 + 's'});
+                        })
+                        $('.skill_right>div').each(function () {
+                            $(this).css({'transform':'translateX(400px)','opacity':0,'transition-delay':$(this).index()/10 + 's'});
+                        })
+                    };
+                    if(index == 2){
+                        $('.big_list').eq(0).find('li').each(function () {
+                            if($(this).index() == 0){
+                                $(this).css({'transform':'translateY(-300px)','opacity':0})
+                            }
+                            if($(this).index() == 3){
+                                $(this).css({'transform':'translateY(300px)','opacity':0})
+                            }
+                            if($(this).index() == 1 || $(this).index() == 2){
+                                $(this).css({'transform':'translateX(300px)','opacity':0})
+                            }
+                            if( $(this).index() == 2){
+                                $(this).css({'transform':'translateX(-300px)','opacity':0})
+                            }
+
+                            $('.demo_right').eq(0).find('h4, p').each(function () {
+                                $(this).css({'transform':'translateX(200px)','opacity':0});
+                            })
+                        });
+                        $('.small_pic').eq(0).find('li').each(function () {
+                            $(this).css({'transform':'translateX( -150px)','opacity':0})
+                        });
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
+                        $('.section').eq(index-1).find('.carousel').css({'transform':'translateY(300px)','opacity':0});
+                        $('.demo_right').eq(0).find('a').css({'transform':'translateY(200px)','opacity':0});
+
+                    }
+
+                    if(index == 3){
+                        $('.projects_list').eq(0).find('li').each(function () {
+                            if( $(this).index() == 1)
+                            {
+                                $(this).css({'transform':'translateY(-400px)','opacity':0})
+                            }else { $(this).css({'transform':'translateY(400px)','opacity':0})}
+                            $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0})
+                            $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
+                        });
+                        $('.projects_introduce').eq(0).find('li').each(function () {
+                            if( $(this).index() == 1)
+                            {
+                                $(this).css({'transform':'translateY(-400px)','opacity':0});
+                            }else { $(this).css({'transform':'translateY(400px)','opacity':0})}
+                        });
+                        $('.projects_right').eq(0).find('h4, p').each(function () {
+                            $(this).css({'transform':'translateX(200px)','opacity':0});
+                        });
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0});
+                        $('.section').eq(index-1).find('.projects_right').eq(0).css({'transform':'translateY(-300px)','opacity':0});
+                    }
+                    if(index == 5){
+                        $('.year').css({'transform':'translateX(-500px)','opacity':0});
+                        $('.work_introduce').css({'transform':'translateX(500px)','opacity':0});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0});
+                        $('.section').eq(index-1).find('.work_right').css({'opacity':0});
+                    }
+
+
+                    if(index == 6){
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-100px)','opacity':0});
+                        $('.section').eq(index-1).find('h4').css({'transform':'translateX(-100px)','opacity':0});
+                        $('.section').eq(index-1).find('.h4_line').css({'transform':'translateX(-100px)','opacity':0});
+                        $('#information').find('p').each(function () {
+                            $(this).css({'transform':'translateY(200px)','opacity':0});
+                        })
+                        $('.section').eq(index-1).find('.picture').css({'transform':'translateX(100px)','opacity':0});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
+                    }
+
+                }
+
+            });
+
+
+            //fullpage页面重置时，响应式处理
+            $(window).resize(function(){
+                autoScrolling();
+            });
+
+            function autoScrolling(){
+                var $ww = $(window).width();
+                if($ww < 1024){
+                    $.fn.fullpage.setAutoScrolling(false);
+                } else {
+                    $.fn.fullpage.setAutoScrolling(true);
+                }
+            }
+            autoScrolling();
+
+        </script>
+</body>
+</html>
