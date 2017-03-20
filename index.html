@@ -56,14 +56,14 @@
                 <ul class="big_list clear">
                     <li><a href="demo/demo1.html" target="_blank"><img src="imgs/demo1.jpg"><div class="big_text"><p>贪吃蛇游戏</p><p>数组保存，运动跟随</p></div></a></li>
                     <li><a href="demo/demo2.html" target="_blank"><img src="imgs/demo2.jpg"><div class="big_text"><p>轮播图</p><p>改变透明度，和相对定位</p></div></a></li>
-                    <li><a href="demo/demo3.html" target="_blank"><img src="imgs/demo3.jpg"><div class="big_text"><p>无缝滚动</p><p>改变相对定位，填补空白区域</p></div></a></li>
+                    <li><a href="demo/demo3.html" target="_blank"><img src="imgs/demo3.jpg"><div class="big_text"><p>拖拽改变大小</p><p>利用拖拽距离，改变大小及绝对定位</p></div></a></li>
                     <li><a href="demo/demo4.html" target="_blank"><img src="imgs/demo4.jpg"><div class="big_text"><p>仿苹果桌面</p><p>鼠标进小远大</p></div></a></li>
                 </ul>
                 <ul class="small_pic clear">
                     <li><a href="demo/demo5.html" target="_blank"><div class="small_text"><p>随机排序</p><p>利用数组排序</p></div><img src="imgs/demo5.jpg"></a></li>
                     <li><a href="demo/demo6.html" target="_blank"><img src="imgs/demo6.jpg"><div class="small_text"><p>拖拽记住轨迹</p><p>运动轨迹保存</p></div></a></li>
                     <li><a href="http://movie.xiaoqintools.cn/movie/list.html" target="_blank"><img src="imgs/demo7.jpg"><div class="small_text"><p>仿豆瓣电影</p><p>ajax请求</p></div></a></li>
-                    <li><a href="demo/demo7.html" target="_blank"><div class="small_text"><p>自制滚动条</p><p>滚动百分比</p></div><img src="imgs/demo8.jpg"></a></li>
+                    <li><a href="demo/demo8.html" target="_blank"><div class="small_text"><p>自制滚动条</p><p>滚动百分比</p></div><img src="imgs/demo8.jpg"></a></li>
                 </ul>
 
             </div>
@@ -657,10 +657,10 @@
 
             var arr5 = {
                 imgs:['imgs/demo1.jpg', 'imgs/demo2.jpg','imgs/demo3.jpg','imgs/demo4.jpg','imgs/demo5.jpg','imgs/demo6.jpg','imgs/demo7.jpg','imgs/demo8.jpg'],
-                title:['贪吃蛇小游戏', '轮播图','无缝滚动','仿苹果桌面','随机排序','拖拽记住运动轨迹','仿豆瓣电影','自制滚动条'],
+                title:['贪吃蛇小游戏', '轮播图','拖拽并改变层大小','仿苹果桌面','随机排序','拖拽记住运动轨迹','仿豆瓣电影','自制滚动条'],
                 text:['1、仿贪吃蛇小游戏<br>2、纯原生js手写代码<br>3、利用蛇头运动时产生的运动轨迹,保存在一个数组里<br>4、每增加一节蛇身，蛇身都跟随蛇头以数组里的运动轨迹。',
                     '1、轮播图列表最常见的各种轮播效果<br>2、利用透明度产生淡入淡入，利用左右移动产生轮播<br>3、以及到最后一张图片，反向运动',
-                    '1、一般网站常见应用demo<br>2、图片在运动时，后续用同样的图片填补运动时的空白<br>3、实现图片无缝滚动，自然连接',
+                    '1、拖拽框带放大缩小<br>2、在普通拖拽的基础上，利用拖拽的距离，来控制框的大小以及绝对定位<br>3、实现图片各位部分拖拽不影响其定位',
                     '1、仿苹果桌面菜单栏<br>2、在一定范围内，利用鼠标离各个菜单栏的距离来让菜单项变大变小<br>3、近大远小',
                     '1、把图片列表的index值存入数组内<br>2、利用数组的随机排序方法。将对应index的列表顺序随机排序',
                     '1、在拖拽的基础上衍生的两种拖拽效果<br>2、一种在利用鼠标移动运动产生的距离，实时改变拖拽元素的运动。<br>3、一种是利用鼠标点击之后，鼠标移动的运动轨迹存在数组内，鼠标抬起，拖拽元素通过数组内的运动数据运动',
@@ -772,7 +772,7 @@
                         $('.demo_right').eq(0).find('h4, p').each(function () {
                             $(this).css({'transform':'translateX(0)','opacity':1});
                         });
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(0)','opacity':1});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'})
                         $('.section').eq(index-1).find('.carousel').css({'transform':'translateY(0)','opacity':1});
                         $('.demo_right').eq(0).find('a').css({'transform':'translateY(0)','opacity':1});
@@ -787,7 +787,7 @@
                         $('.projects_right').eq(0).find('h4, p').each(function () {
                             $(this).css({'transform':'translateX(0)','opacity':1});
                     });
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(0)','opacity':1});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'});
                         $('.section').eq(index-1).find('.projects_right').eq(0).css({'transform':'translateY(0)','opacity':1});
                     }
@@ -795,12 +795,11 @@
                         $('.section').eq(index-1).find('li').each(function () {
                             $(this).css({'transform':'translateX(0)','opacity':1})
                         });
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(0)','opacity':1});
                         $('.pot').eq(0).find('i').each(function () {
                             $(this).css({'transform':'translateY(0)','opacity':1});
                         });
                         $('.section').eq(index-1).find('.title_line').css('width','20%');
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'});
                         $('.skill_left>div').each(function () {
                             $(this).css({'transform':'translateX(0)','opacity':1,'transition-delay':$(this).index()/10 + 's'});
@@ -814,11 +813,11 @@
                         $('.year').css({'transform':'translateX(0)','opacity':1});
                         $('.section').eq(index-1).find('.work_right').css({'opacity':1});
                         $('.work_introduce').css({'transform':'translateX(0)','opacity':1});
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(0)','opacity':1});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'})
                     }
                     if(index == 6){
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(0)','opacity':1});
                         $('.section').eq(index-1).find('h4').css({'transform':'translateX(0)','opacity':1});
                         $('.section').eq(index-1).find('.h4_line').css({'transform':'translateX(0)','opacity':1});
                         $('#information').find('p').each(function () {
@@ -826,7 +825,6 @@
                         });
 
                         $('.section').eq(index-1).find('.picture').css({'transform':'translateX(0)','opacity':1});
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(0)','opacity':1});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':'20%'})
 
                     }
@@ -845,12 +843,11 @@
                                 $(this).css({'transform':'translateY(-500px)','opacity':0,'transition':'all .5s'})
                             }
                         });
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-300px)','opacity':0});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(-200px)','opacity':0});
                         $('.pot').eq(0).find('i').each(function () {
                             $(this).css({'transform':'translateY(-300px)','opacity':0});
                         })
                         $('.section').eq(index-1).find('.title_line').css('width',0);
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
                         $('.skill_left>div').each(function () {
                             $(this).css({'transform':'translateX(-400px)','opacity':0,'transition-delay':$(this).index()/10 + 's'});
@@ -881,7 +878,7 @@
                         $('.small_pic').eq(0).find('li').each(function () {
                             $(this).css({'transform':'translateX( -150px)','opacity':0})
                         });
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(-200px)','opacity':0});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
                         $('.section').eq(index-1).find('.carousel').css({'transform':'translateY(300px)','opacity':0});
                         $('.demo_right').eq(0).find('a').css({'transform':'translateY(200px)','opacity':0});
@@ -894,7 +891,7 @@
                             {
                                 $(this).css({'transform':'translateY(-400px)','opacity':0})
                             }else { $(this).css({'transform':'translateY(400px)','opacity':0})}
-                            $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0})
+                            $('.section').eq(index-1).find('h3').css({'transform':'translateX(-200px)','opacity':0})
                             $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
                         });
                         $('.projects_introduce').eq(0).find('li').each(function () {
@@ -906,28 +903,26 @@
                         $('.projects_right').eq(0).find('h4, p').each(function () {
                             $(this).css({'transform':'translateX(200px)','opacity':0});
                         });
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0});
                         $('.section').eq(index-1).find('.projects_right').eq(0).css({'transform':'translateY(-300px)','opacity':0});
                     }
                     if(index == 5){
                         $('.year').css({'transform':'translateX(-500px)','opacity':0});
                         $('.work_introduce').css({'transform':'translateX(500px)','opacity':0});
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(-200px)','opacity':0});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0});
                         $('.section').eq(index-1).find('.work_right').css({'opacity':0});
                     }
 
 
                     if(index == 6){
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-100px)','opacity':0});
                         $('.section').eq(index-1).find('h4').css({'transform':'translateX(-100px)','opacity':0});
                         $('.section').eq(index-1).find('.h4_line').css({'transform':'translateX(-100px)','opacity':0});
                         $('#information').find('p').each(function () {
                             $(this).css({'transform':'translateY(200px)','opacity':0});
                         })
                         $('.section').eq(index-1).find('.picture').css({'transform':'translateX(100px)','opacity':0});
-                        $('.section').eq(index-1).find('h3').css({'transform':'translateY(-200px)','opacity':0});
+                        $('.section').eq(index-1).find('h3').css({'transform':'translateX(-200px)','opacity':0});
                         $('.section').eq(index-1).find('.hr1,.hr2').css({'width':0})
                     }
 
